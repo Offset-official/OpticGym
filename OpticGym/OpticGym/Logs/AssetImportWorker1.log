@@ -1078,3 +1078,11 @@ AssetImportParameters requested are different than current active one (requested
 [usbmuxd] Detached: 1 00008030-0016551E14D0C02E
 [usbmuxd] Attached: 2 00008030-0016551E14D0C02E
 [usbmuxd] Detached: 2 00008030-0016551E14D0C02E
+========================================================================
+Received Import Request.
+  Time since last request: 1613.696147 seconds.
+  path: Assets/XR/Loaders/AR Kit Loader.asset
+  artifactKey: Guid(e83f94cb3ed0e3041b49796e826aabbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/XR/Loaders/AR Kit Loader.asset using Guid(e83f94cb3ed0e3041b49796e826aabbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '911e2106480f6acf367aadc93a14eade') in 0.095207 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0

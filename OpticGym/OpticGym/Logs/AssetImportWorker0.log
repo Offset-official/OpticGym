@@ -982,3 +982,75 @@ AssetImportParameters requested are different than current active one (requested
 [usbmuxd] Detached: 1 00008030-0016551E14D0C02E
 [usbmuxd] Attached: 2 00008030-0016551E14D0C02E
 [usbmuxd] Detached: 2 00008030-0016551E14D0C02E
+========================================================================
+Received Import Request.
+  Time since last request: 1594.990176 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(4755b35b590504809a7525fd2109c2e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(4755b35b590504809a7525fd2109c2e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e00135ba9b9904b30db34cc50a4dff21') in 0.013746 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 13.205324 seconds.
+  path: Assets/XRI
+  artifactKey: Guid(6807a1956e5e343df9d749230187e0dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/XRI using Guid(6807a1956e5e343df9d749230187e0dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82d6830a9d0919ac220196c6040729a9') in 0.000961 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.197830 seconds.
+  path: Assets/XR
+  artifactKey: Guid(51826be0437e2d84099d9656c779aa66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/XR using Guid(51826be0437e2d84099d9656c779aa66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44cd18fc05a8dbe955e968b4e6eb9563') in 0.000775 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.059720 seconds.
+  path: Assets/XR/XRGeneralSettings.asset
+  artifactKey: Guid(3fd4fc0127790db4bae83f7b77da8d45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/XR/XRGeneralSettings.asset using Guid(3fd4fc0127790db4bae83f7b77da8d45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28554bc78b9dc70bd59889164c6d605f') in 0.061436 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.018841 seconds.
+  path: Assets/XR/Loaders
+  artifactKey: Guid(76606d46768e52a4e9c025530c3e0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/XR/Loaders using Guid(76606d46768e52a4e9c025530c3e0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e63ecd1f4453957849f1bed274ffa8f') in 0.000805 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.059417 seconds.
+  path: Assets/XR/Loaders/AR Core Loader.asset
+  artifactKey: Guid(bbf1bbcc68185fe41b723ad39ec4d68e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/XR/Loaders/AR Core Loader.asset using Guid(bbf1bbcc68185fe41b723ad39ec4d68e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1af4dde270ef23b6a357bdf2656d67f4') in 0.001085 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000100 seconds.
+  path: Assets/XR/Loaders/SimulationLoader.asset
+  artifactKey: Guid(b92644a1b70d34c08aaf6c1b37c9675d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/XR/Loaders/SimulationLoader.asset using Guid(b92644a1b70d34c08aaf6c1b37c9675d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a953ceab1e2909c62a05f3ee3b4b0b69') in 0.000957 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000075 seconds.
+  path: Assets/XR/Loaders/OpenXRLoader.asset
+  artifactKey: Guid(1da541d6fbe8d4dfd8e9355f4dd301b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/XR/Loaders/OpenXRLoader.asset using Guid(1da541d6fbe8d4dfd8e9355f4dd301b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be515984cdaca3feae6c2db4015f1bc3') in 0.003519 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 21.332473 seconds.
+  path: Assets/Scenes/MainScene.unity
+  artifactKey: Guid(34e6d093fae4e46caafbf71142ab97a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/MainScene.unity using Guid(34e6d093fae4e46caafbf71142ab97a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9605db56b84d62dbae0dd83b387f59a3') in 0.000844 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
