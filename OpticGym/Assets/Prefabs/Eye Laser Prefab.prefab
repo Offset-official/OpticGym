@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4526331288144825958}
   - component: {fileID: 7396793636517721496}
   m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
+  m_Name: Laser
+  m_TagString: ARDebug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -18,6 +18,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
         [SerializeField]
         GameObject m_EyePrefab;
 
+        private bool showShader = true;
+
         public GameObject eyePrefab
         {
             get => m_EyePrefab;
@@ -81,6 +83,16 @@ namespace UnityEngine.XR.ARFoundation.Samples
         {
             CreateEyeGameObjectsIfNecessary();
             SetVisible((m_Face.trackingState == TrackingState.Tracking) && (ARSession.state > ARSessionState.Ready));
+        }
+
+        public void ToggleLaserShader()
+        {
+            showShader = !showShader;
+            var laserCylinders = GameObject.FindGameObjectsWithTag("ARDebug");
+            foreach(var cylinder in laserCylinders)
+            {
+               cylinder.GetComponent<MeshRenderer>().enabled = showShader;
+            }
         }
     }
 }
