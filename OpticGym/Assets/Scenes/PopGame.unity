@@ -283,10 +283,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 502992892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11265274b73949141b0b8e6df3db99fa, type: 3}
+  m_Script: {fileID: 11500000, guid: ce1a5717116c3544288dda52c61276f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubblePrefab: {fileID: 1665135141946613164, guid: abd50c08115773d428c88a97a05a63bf, type: 3}
+  bubblePrefab: {fileID: 2783730880956308475, guid: 0698958a68aabf044915f9e336633bc1,
+    type: 3}
 --- !u!4 &502992894
 Transform:
   m_ObjectHideFlags: 0
@@ -540,6 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1031205905}
   - component: {fileID: 1031205904}
+  - component: {fileID: 1031205906}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -624,6 +626,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1031205906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031205903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1195873386
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caeceacb624484daf8e379c2252fd246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FacePrefab: {fileID: 3518301225038714126, guid: 03c1dbe637f03c6449bf903b14dca4d1, type: 3}
+  m_FacePrefab: {fileID: 3518301225038714126, guid: dd2763e4783dec64cabf8c3b2d4ffc16,
+    type: 3}
   m_MaximumFaceCount: 1
 --- !u!114 &1266200894
 MonoBehaviour:
