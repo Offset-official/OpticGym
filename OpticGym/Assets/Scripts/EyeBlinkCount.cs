@@ -6,14 +6,15 @@ using static System.Net.Mime.MediaTypeNames;
 using UnityEngine.XR.ARKit;
 #endif
 
+
 namespace UnityEngine.XR.ARFoundation.Samples
 {
-    /// <summary>
-    /// Visualizes the eye poses for an <see cref="ARFace"/>.
-    /// </summary>
-    /// <remarks>
-    /// Face space is the space where the origin is the transform of an <see cref="ARFace"/>.
-    /// </remarks>
+    enum EyeState
+    {
+        Closed,
+        Open
+    }
+
     [RequireComponent(typeof(ARFace))]
     public class EyeBlinkCouunt : MonoBehaviour
     {
@@ -22,7 +23,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
         UI.Text m_BlinkCountText;
         ARKit.ARKitFaceSubsystem m_FaceSubsystem;
 
-        private float blinkState = 0;
+        private EyeState eyeState = EyeState.Open;
+        private int blinkCount = 0;
 
         void Awake()
         {
@@ -55,6 +57,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
             m_Face.updated -= OnUpdated;
         }
 
+
         void OnUpdated(ARFaceUpdatedEventArgs eventArgs)
         {
 
@@ -63,12 +66,32 @@ namespace UnityEngine.XR.ARFoundation.Samples
             {
                 if (blendShape.blendShapeLocation == ARKit.ARKitBlendShapeLocation.EyeBlinkLeft)
                 {
-                    blinkState += blendShape.coefficient;
 
-                    m_BlinkCountText.text = blinkState.ToString();
+                    if (blendShape.coefficient >= 0.8)
+                    {
+                        eyeState = EyeState.Closed;
+                    }
+                    else
+                    {
+                        if(eyeState == EyeState.Closed)
+                        {
+                            blinkCount += 1;
+                            UpdateBlinkCountText();
+                        }
+
+                        eyeState = EyeState.Open;
+                    }
+
+
+                    break; // early exit only care about this
                 }
             }
 
+        }
+
+        private void UpdateBlinkCountText()
+        {
+            m_BlinkCountText.text = blinkCount.ToString();
         }
 
     }
