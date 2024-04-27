@@ -18,6 +18,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
     [RequireComponent(typeof(ARFace))]
     public class EyeBlinkCouunt : MonoBehaviour
     {
+#if UNITY_IOS && !UNITY_EDITOR
+
 
         ARFace m_Face;
         UI.Text m_BlinkCountText;
@@ -93,6 +95,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
         {
             m_BlinkCountText.text = blinkCount.ToString();
         }
+#endif
 
     }
+
 }
