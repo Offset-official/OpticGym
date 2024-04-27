@@ -34,17 +34,30 @@ namespace UnityEngine.XR.ARFoundation.Samples
         {
             m_Face = GetComponent<ARFace>();
         }
+        void Update()
+        {
+
+            // if (m_RightEyeGameObject)
+            // {
+            //     Debug.Log("Right eye rotation: " + m_RightEyeGameObject.transform.rotation.eulerAngles);
+            // }
+
+        }
 
         void CreateEyeGameObjectsIfNecessary()
         {
             if (m_Face.leftEye != null && m_LeftEyeGameObject == null)
             {
                 m_LeftEyeGameObject = Instantiate(m_EyePrefab, m_Face.leftEye);
+                // Debug.Log("Left eye created");
+                // Debug.Log(m_Face.leftEye.rotation.eulerAngles);
                 m_LeftEyeGameObject.SetActive(false);
             }
             if (m_Face.rightEye != null && m_RightEyeGameObject == null)
             {
                 m_RightEyeGameObject = Instantiate(m_EyePrefab, m_Face.rightEye);
+                // Debug.Log("Right eye created");
+                // Debug.Log(m_Face.rightEye.rotation.eulerAngles);
                 m_RightEyeGameObject.SetActive(false);
             }
         }
@@ -81,6 +94,10 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void OnUpdated(ARFaceUpdatedEventArgs eventArgs)
         {
+            if (m_LeftEyeGameObject)
+            {
+                Debug.Log("Left eye rotation: " + m_LeftEyeGameObject.transform.parent.rotation);
+            }
             CreateEyeGameObjectsIfNecessary();
             SetVisible((m_Face.trackingState == TrackingState.Tracking) && (ARSession.state > ARSessionState.Ready));
         }
@@ -89,9 +106,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
         {
             showShader = !showShader;
             var laserCylinders = GameObject.FindGameObjectsWithTag("ARDebug");
-            foreach(var cylinder in laserCylinders)
+            foreach (var cylinder in laserCylinders)
             {
-               cylinder.GetComponent<MeshRenderer>().enabled = showShader;
+                cylinder.GetComponent<MeshRenderer>().enabled = showShader;
             }
         }
     }

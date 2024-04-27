@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     void SpawnBubble(ARFace face)
     {
-        
+
         if (face != null)
         {
             Transform faceChild = face.gameObject.transform.GetChild(0);
@@ -71,14 +71,14 @@ public class GameManager : MonoBehaviour
             Debug.Log(currBubblePos);
             GameObject bubble = Instantiate(bubblePrefab,
                 faceChild.transform.position + new Vector3(0, 0, -0.1f),
-                Quaternion.Euler(new Vector3(0, 0, 0)),
-                faceChild);
+                Quaternion.Euler(new Vector3(0, 0, 0))
+                );
             /*faceChild.transform.rotation = Quaternion.Euler(new Vector3(0, currBubblePos * 90));*/
             bubblesAdded++;
             Debug.Log("Bubble spawned");
             /*            scoreBoard.GetComponent<TextMeshProUGUI>().text = "Time " + Time.time;
             */
-            
+
             scoreBoard.GetComponent<TextMeshProUGUI>().text = "Score: " + bubblesPopped + "/" + bubblesAdded;
             bubble.GetComponent<BubbleManager>().gameManager = gameObject;
             float randAngle = Random.Range(0, 2 * Mathf.PI);
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     {
         bubblesPopped++;
         SpawnBubble(arFace);
-        
+
 
     }
     void bubbleTimeOut(GameObject bubble)
@@ -101,6 +101,6 @@ public class GameManager : MonoBehaviour
         SpawnBubble(arFace);
     }
 
-    
-    
+
+
 }

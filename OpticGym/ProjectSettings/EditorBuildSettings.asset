@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/EyeLasers.unity
     guid: 41bb31b17b73848f1befa6fb06705328
   - enabled: 0
     path: Assets/Scenes/EyeBlink.unity
     guid: c23f80a737d52451e8176c1329700b69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PopGame.unity
     guid: 56648ea89b5bd9242a6acc4dcff7b338
   m_configObjects:
