@@ -21,7 +21,7 @@ public class BubbleManager : MonoBehaviour
 
     void Start()
     {
-        Invoke("DetectStart", 5);
+        Invoke("DetectStart", 1);
         Invoke("TimeOut", 20.999f);
         audioSource = GetComponent<AudioSource>();
   
@@ -36,7 +36,11 @@ public class BubbleManager : MonoBehaviour
         float yStep = Mathf.Cos(randAngle) * Time.deltaTime * speed;
         if (!detecting)
         {
-            transform.position = new Vector3(transform.position.x + xStep, transform.position.y + yStep, transform.position.z);
+            //transform.position = new Vector3(transform.position.x + xStep, transform.position.y + yStep, transform.position.z);
+
+            transform.position = new Vector3(transform.position.x,
+                transform.position.y + 0.01f,
+                transform.position.z);
         }
 
 
