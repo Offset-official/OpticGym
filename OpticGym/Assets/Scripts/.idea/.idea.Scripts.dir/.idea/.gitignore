@@ -3,9 +3,9 @@
 /workspace.xml
 
 # Rider ignored files
+/.idea.Scripts.iml
 /modules.xml
 /contentModel.xml
-/.idea.Scripts.iml
 /projectSettingsUpdater.xml
 
 # Editor-based HTTP Client requests
