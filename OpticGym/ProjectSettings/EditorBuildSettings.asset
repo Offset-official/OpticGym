@@ -5,30 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: bb0a6bb3f5a7cdf47a4e31761ed51706
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/DistanceCheck.unity
     guid: 4f6ab03b793b54ace84134d272ce68d8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Voicing.unity
     guid: 6704c31eac6a077478de380419a82a66
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/EyeLasers.unity
     guid: 41bb31b17b73848f1befa6fb06705328
-  - enabled: 0
-    path: Assets/Scenes/EyeTest.unity
-    guid: 8b3a5994fc0162647be64af9b16b0db6
   - enabled: 1
     path: Assets/Scenes/EyeBlink.unity
     guid: c23f80a737d52451e8176c1329700b69
-  - enabled: 0
-    path: Assets/Scenes/PopGame.unity
-    guid: 56648ea89b5bd9242a6acc4dcff7b338
-  - enabled: 0
-    path: Assets/Scenes/EyeState.unity
-    guid: 6b13b11f1abae402c8f108e8baf4af7e
   - enabled: 1
     path: Assets/Scenes/EyeGame.unity
     guid: 595264ca0dff743eb8ec94608088ac40
