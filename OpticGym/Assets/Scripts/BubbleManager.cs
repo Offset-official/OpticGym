@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,9 +15,8 @@ public class BubbleManager : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-
+     
     }
-    bool destroying = false;
 
     // Update is called once per frame
     void Update()
@@ -30,22 +28,14 @@ public class BubbleManager : MonoBehaviour
 
         if (mirrorFixationInView.x <= 0 || mirrorFixationInView.x >= 1 || mirrorFixationInView.y <= 0 || mirrorFixationInView.y >= 1)
         {
-            if (!destroying)
-                StartCoroutine(LeaveScreenCouroutine());
+            gameManager.GetComponent<GameManager>().bubbleLeft();
+            Destroy(gameObject);
         }
 
 
         transform.position = new Vector3(transform.position.x + (direction[0] * speed),
             transform.position.y + (direction[1] * speed),
             transform.position.z);
-    }
-    IEnumerator LeaveScreenCouroutine()
-    {
-        destroying = true;
-        yield return new WaitForSeconds(1);
-        gameManager.GetComponent<GameManager>().bubbleLeft();
-        Destroy(gameObject);
-
     }
 
 }
