@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     FixationPoint2DCoords fixationScript;
 
+
     AudioSource m_AudioSource;
     RawImage currStateSprite;
 
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("looking for collision");
         Debug.Log("detection: " + detecting);
-        if(detecting)
+        if (detecting)
         {
             Debug.Log(eyeDestinations[currBubblePos]);
             var isCorrectDirection = fixationScript.IsFixationAt(eyeDestinations[currBubblePos]);
@@ -59,10 +60,10 @@ public class GameManager : MonoBehaviour
                 Debug.Log("correct eyes state. need to go next");
                 currBubblePos = (currBubblePos + 1) % eyeDestinations.Count;
                 bubblesPopped += 1;
-                currStateSprite.color = new Color(255, 255, 255, 80);
+                currStateSprite.color = new Color(255, 255, 255, 30);
                 detecting = false;
                 isCorrectDirection = false; // just in case
-                PlaySoundAndSpawn();
+                StartCoroutine(PlaySoundAndSpawn());
             }
         }
     }
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
         var spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zCoord));
 
         Debug.Log(currBubblePos);
-        GameObject bubble = Instantiate(bubblePrefab,spawnPosition,Quaternion.Euler(new Vector3(0, 0, 0)));
+        GameObject bubble = Instantiate(bubblePrefab, spawnPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
 
         bubblesAdded++;
 
@@ -116,14 +117,21 @@ public class GameManager : MonoBehaviour
         detecting = true;
         Debug.Log(eyeDestinations[currBubblePos].ToString());
         currStateSprite = GameObject.Find(eyeDestinations[currBubblePos].ToString()).GetComponent<RawImage>();
-        currStateSprite.color = new Color(255, 0, 0, 255);
+
+        currStateSprite.color = new Color(0, 26, 245, 200);
     }
 
     IEnumerator PlaySoundAndSpawn()
     {
+        Debug.Log("playing audio");
         m_AudioSource.Play();
-        yield return new WaitUntil(() => m_AudioSource.isPlaying == false);
+        yield return new WaitUntil(() => m_AudioSource.time >= m_AudioSource.clip.length);
         SpawnBubble(arFace);
+    }
+    public void ToggleRays()
+    {
+        Debug.Log("Toggling rays");
+        arFace.GetComponent<EyePoseVisualizer>().ToggleLaserShader();
     }
 
 }

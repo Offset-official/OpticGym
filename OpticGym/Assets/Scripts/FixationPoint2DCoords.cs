@@ -26,9 +26,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
             var upperX = diseredRange[2];
             var upperY = diseredRange[3];
 
-            if(lowerX <= myX && myX <= upperX)
+            if (lowerX <= myX && myX <= upperX)
             {
-                if(lowerY <= myY && myY <= upperY)
+                if (lowerY <= myY && myY <= upperY)
                 {
                     return true;
                 }
@@ -81,7 +81,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
             var eyeStateString = "Null";
             foreach (var state in CustomEyeData.EyePositions.Keys)
             {
-                
+
                 var isCorrect = IsFixationAt(state);
                 if (isCorrect)
                 {
@@ -91,5 +91,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
             }
             GameObject.Find("Eye State Info").GetComponent<UI.Text>().text = eyeStateString;
         }
+
     }
 }
