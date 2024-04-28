@@ -8,12 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: bb0a6bb3f5a7cdf47a4e31761ed51706
-  - enabled: 0
-    path: Assets/Scenes/EyeLasers.unity
-    guid: 41bb31b17b73848f1befa6fb06705328
+  - enabled: 1
+    path: Assets/Scenes/DistanceCheck.unity
+    guid: 4f6ab03b793b54ace84134d272ce68d8
   - enabled: 1
     path: Assets/Scenes/Voicing.unity
     guid: 6704c31eac6a077478de380419a82a66
+  - enabled: 0
+    path: Assets/Scenes/EyeLasers.unity
+    guid: 41bb31b17b73848f1befa6fb06705328
+  - enabled: 0
+    path: Assets/Scenes/EyeTest.unity
+    guid: 8b3a5994fc0162647be64af9b16b0db6
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}

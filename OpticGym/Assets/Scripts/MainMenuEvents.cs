@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
@@ -18,6 +16,7 @@ public class MainMenuEvents : MonoBehaviour
 
         _button_eyetest = _document.rootVisualElement.Q("eyetestbutton") as Button;
         _button_eyetest.RegisterCallback<ClickEvent>(OnEyeTestClick);
+
     }
     private void OnDisable()
     {
@@ -27,14 +26,14 @@ public class MainMenuEvents : MonoBehaviour
     private void OnEasyEyeGameClick(ClickEvent evt)
     {
         Debug.Log("Easy Eye Exercise Clicked");
-        SceneManager.LoadScene("EasyEyeGame");
+        SceneManager.LoadScene("EyeLasers");
         
     }
 
     private void OnEyeTestClick(ClickEvent evt)
     {
         Debug.Log("Eye Test Clicked");
-        SceneManager.LoadScene("EyeTest");
+        SceneManager.LoadScene("DistanceCheck");
         
     }
 }

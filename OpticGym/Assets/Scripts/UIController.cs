@@ -7,6 +7,7 @@ using UnityEngine.Android;
 using System.Linq;
 using System;
 using Whisper.Utils;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class UIController : MonoBehaviour
     private Label _actuityScore;
     private Label _scoreLabel;
     public Button _startButton;
+    public Button _backButton;
     private int error;
     [SerializeField] private AudioClip StartInstructions;
     
@@ -106,13 +108,14 @@ public class UIController : MonoBehaviour
         _scoreLabel = root.Q<Label>("scoreLabel");
         _startButton = root.Q<Button>("startButton");
         _actuityScore = root.Q<Label>("ActuityScore");
-        
+        _backButton = root.Q<Button>("BackButton");
         // _bottomContainer.style.display = DisplayStyle.None;
         _proceedButton.RegisterCallback<ClickEvent>(OnProceedButtonClicked);
         _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClicked);
+        _backButton.RegisterCallback<ClickEvent>(OnBackClicked);
         // _overlapSheet.RegisterCallback<TransitionEndEvent>(OnOverLapSheetDown);
         // _nextButton.RegisterCallback<ClickEvent>(OnNextButtonClicked);
-        
+
         // to start from the test directly
         _bottomContainer.style.display = DisplayStyle.Flex;
         _overlapSheet.AddToClassList("bottomSheet--up");
@@ -128,7 +131,9 @@ public class UIController : MonoBehaviour
     }
 
     //event handlers
-
+    private void OnBackClicked(ClickEvent c) {
+        SceneManager.LoadScene("MainMenu");
+    }
     //proceed button(main screen eye test) clicked
 
     private void OnProceedButtonClicked(ClickEvent evt)
@@ -154,22 +159,7 @@ public class UIController : MonoBehaviour
         _snellenLabel.text = "";
         _snellenLabel.style.fontSize = size;
     }
-
-    //snellen chart screen closing animation
-    private void OnOverLapSheetDown(TransitionEndEvent evt)
-    {
-        if (!_overlapSheet.ClassListContains("bottomSheet--up"))
-        {
-            _bottomContainer.style.display = DisplayStyle.None;
-        }
-    }
     
-    //next button clicked when viewing letters
-    private void OnNextButtonClicked(ClickEvent evt)
-    {
-
-        GoNext();
-    }
 
     private void GoNext()
     {
@@ -207,7 +197,6 @@ public class UIController : MonoBehaviour
         Debug.Log("Game is Over");
         _bottomContainer.style.display = DisplayStyle.None;
         _overlapSheet.RemoveFromClassList("bottomSheet--up");
-        // _scrim.RemoveFromClassList("scrim--fadein");
         pointer = 1;
         _snellenLabel.text = "";
         _snellenLabel.style.fontSize = size;
@@ -245,36 +234,6 @@ public class UIController : MonoBehaviour
                 older = VoiceRecogScript.response;
             }
         }
-        // if (!_beingHandled)
-        // {
-        //     StartCoroutine(Listen());
-        // }
-        //
-        // if (VoiceRecogScript.response != ' ')
-        // {
-        //     char epic = VoiceRecogScript.response;
-        //     Debug.Log("Comparing Against: " + snellenMapping.ElementAt(pointer - 1).Key.Substring(0, 1)[0] + "With " + epic);
-
-        //     else
-        //     {
-        //         Debug.Log("WRONG");
-        //     }
-        //     VoiceRecogScript.response = ' ';
-        // }
     }
     
-    // private IEnumerator Listen()
-    // {
-    //     _beingHandled = true;
-    //     // yield return new WaitForSeconds(2f);
-    //     Debug.Log("This Script is running");
-    //     // _startButton.SendEvent(ClickEvent);
-    //     VoiceRecogScript.StartRecording();
-    //     yield return new WaitForSeconds(5f);
-    //     VoiceRecogScript.StopRecording();
-    //         // _startButton.SendEvent(e);
-    //     yield return new WaitForSeconds(4f);
-    //     // Debug.Log("Done Waiting");
-    //     _beingHandled = false;
-    // }
 }

@@ -1,6 +1,3 @@
-using System.Diagnostics;
-using System.IO;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.UIElements;
@@ -13,7 +10,6 @@ public class VoiceRecog : MonoBehaviour
     {
 
         public static AudioClip clip;
-        private static byte[] bytes;
         public static bool recording;
         public char response;
         public Button _startButton;
@@ -44,14 +40,13 @@ public class VoiceRecog : MonoBehaviour
             {
                 Permission.RequestUserPermission(Permission.Microphone);
             }
+        _audioData = GetComponent<AudioSource>();
         }
         
         private void OnButtonPressed(ClickEvent evt)
         {
             if (!microphoneRecord.IsRecording)
             {
-                _audioData.clip = NormalInstructions;
-                _audioData.Play();
                 microphoneRecord.StartRecord();
                 Debug.Log("Recording Started");
                 _startButton.text = "Stop";
@@ -96,24 +91,6 @@ public class VoiceRecog : MonoBehaviour
             Debug.Log("This is working!");
         }
         
-        // private void SendRecording()
-        // {
-        //     _spokenTextBox.style.color = Color.yellow;
-        //     _spokenTextBox.text = "Sending...";
-        //     _stopButton.SetEnabled(false);
-        //     HuggingFaceAPI.AutomaticSpeechRecognition(bytes, res =>
-        //     {
-        //         _spokenTextBox.style.color = Color.white;
-        //         _spokenTextBox.text = "Detected: " + res;
-        //         response = res;
-        //         _startButton.SetEnabled(true);
-        //     }, error =>
-        //     {
-        //         _spokenTextBox.style.color = Color.red;
-        //         _spokenTextBox.text = error;
-        //         _startButton.SetEnabled(true);
-        //     });
-        // }
 
         private void OnNewSegment(WhisperSegment segment)
         {
@@ -122,6 +99,5 @@ public class VoiceRecog : MonoBehaviour
 
             _buffer += segment.Text;
             _spokenTextBox.text = _buffer + "...";
-            // UiUtils.ScrollDown(scroll);
         }
     }
