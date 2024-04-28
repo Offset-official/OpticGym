@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(38, 38, 38);">
+        <ui:Button text="&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" style="height: 150px; width: 150px; margin-left: 47px; margin-top: 47px; padding-top: 29px; border-top-left-radius: 48px; border-top-right-radius: 48px; border-bottom-right-radius: 48px; border-bottom-left-radius: 48px; background-color: rgb(1, 122, 255); background-image: none; -unity-background-image-tint-color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-right: 44px; padding-bottom: 29px; padding-left: 43px; margin-right: 47px; margin-bottom: 47px; -unity-slice-left: 0;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/chevron_left.png?fileID=2800000&amp;guid=2a5159f0df035488aaba038046d205ce&amp;type=3#chevron_left&quot;);" />
+        </ui:Button>
+        <ui:VisualElement style="flex-grow: 1; justify-content: center; align-self: center; font-size: 251px; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/SFPRODISPLAYMEDIUM%20SDF.asset?fileID=11400000&amp;guid=e106cbbe0a0a3974eae6e21f1b8d55e1&amp;type=2#SFPRODISPLAYMEDIUM SDF&quot;);">
+            <ui:Label tabindex="-1" text="0/15" parse-escape-sequences="true" display-tooltip-when-elided="true" name="blinkCountInfo" style="-unity-text-align: middle-center; color: rgba(255, 255, 255, 0.26);" />
+            <ui:Label tabindex="-1" text="No Face Detected" parse-escape-sequences="true" display-tooltip-when-elided="true" name="status" style="font-size: 57px; -unity-text-align: upper-center; color: rgba(255, 255, 255, 0.41);" />
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="Blink Test" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="font-size: 185px; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/SFPRODISPLAYMEDIUM%20SDF.asset?fileID=11400000&amp;guid=e106cbbe0a0a3974eae6e21f1b8d55e1&amp;type=2#SFPRODISPLAYMEDIUM SDF&quot;); margin-bottom: 65px; margin-left: 92px;" />
+    </ui:VisualElement>
+</ui:UXML>

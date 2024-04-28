@@ -1,7 +1,4 @@
-using UnityEngine;
-using UnityEngine.XR.ARSubsystems;
-using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
+using UnityEngine.UIElements;
 #if UNITY_IOS && !UNITY_EDITOR
 using UnityEngine.XR.ARKit;
 #endif
@@ -18,11 +15,13 @@ namespace UnityEngine.XR.ARFoundation.Samples
     [RequireComponent(typeof(ARFace))]
     public class EyeBlinkCouunt : MonoBehaviour
     {
-#if UNITY_IOS && !UNITY_EDITOR
 
+
+        [SerializeField]
+        const int totalBlinkCount = 10;
 
         ARFace m_Face;
-        UI.Text m_BlinkCountText;
+        Label m_BlinkCountText;
         ARKit.ARKitFaceSubsystem m_FaceSubsystem;
 
         private EyeState eyeState = EyeState.Open;
@@ -34,8 +33,11 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             m_FaceSubsystem = (ARKit.ARKitFaceSubsystem)FindObjectOfType<ARFaceManager>().subsystem;
 
-            m_BlinkCountText = GameObject.Find("Blink Count").GetComponent<UI.Text>();
-            m_BlinkCountText.text = "Ready to blink";
+
+            var root = FindObjectOfType<UIDocument>().rootVisualElement;
+
+            m_BlinkCountText = root.Q<Label>("blinkCountInfo");
+            m_BlinkCountText.text = "Ready to blink!";
 
         }
 
@@ -93,9 +95,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         private void UpdateBlinkCountText()
         {
-            m_BlinkCountText.text = blinkCount.ToString();
+            Debug.Log(blinkCount);
+            m_BlinkCountText.text = blinkCount.ToString() + "/" + totalBlinkCount.ToString();
         }
-#endif
 
     }
 
