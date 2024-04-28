@@ -103,13 +103,6 @@ public class GameManager : MonoBehaviour
         var spawnPos = CustomEyeData.EyeStateToPositions[spawnEnum];
         spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f + spawnPos[0] * 0.4f, 0.5f + spawnPos[1] * 0.4f, zCoord));
 
-        // }
-        // else
-        // {
-        //     spawnPosition = lastBubblePopPos;
-        // }
-
-
         Debug.Log(currBubblePos);
         GameObject bubble = Instantiate(bubblePrefab, spawnPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
 

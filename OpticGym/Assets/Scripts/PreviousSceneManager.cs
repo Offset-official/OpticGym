@@ -1,6 +1,4 @@
-﻿
-
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 public class NewClass
 {
 	public static void ReturnToMain()

@@ -1,15 +1,9 @@
-using UnityEngine;
-using UnityEngine.XR.ARSubsystems;
-
-
 namespace UnityEngine.XR.ARFoundation.Samples
 {
     [RequireComponent(typeof(ARFace))]
     public class FixationPoint2DCoords : MonoBehaviour
     {
 
-
-        Canvas m_Canvas;
         ARFace m_Face;
 
         private Vector3 fixationCoords;

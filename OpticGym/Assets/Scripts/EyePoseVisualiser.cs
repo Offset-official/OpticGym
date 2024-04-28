@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.XR.ARSubsystems;
 #if UNITY_IOS && !UNITY_EDITOR
 using UnityEngine.XR.ARKit;
