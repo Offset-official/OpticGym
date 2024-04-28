@@ -2,6 +2,7 @@
     <Style src="project://database/Assets/SnellenChartSheet.uss?fileID=7433441132597879392&amp;guid=3aa826639f9b95546bed686c3ff8ed02&amp;type=3#SnellenChartSheet" />
     <ui:VisualElement name="Container" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/image%20(1).png?fileID=2800000&amp;guid=8e312dac818ebe442bcfce90fd9a4ef8&amp;type=3#image (1)&quot;); -unity-background-scale-mode: stretch-to-fill; display: flex;">
         <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 30%; -unity-text-align: middle-center; flex-direction: column; align-self: center; align-items: center; justify-content: center;">
+
             <ui:Label tabindex="-1" text="Welcome to Eye Test" parse-escape-sequences="true" display-tooltip-when-elided="true" style="justify-content: flex-start; align-items: center; font-size: 122px;" />
             <ui:Label tabindex="-1" text="Please click proceed to restart the test. " parse-escape-sequences="true" display-tooltip-when-elided="true" style="justify-content: flex-start; align-items: center; font-size: 70px;" />
         </ui:VisualElement>

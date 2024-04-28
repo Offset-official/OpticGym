@@ -147,6 +147,8 @@ Light:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+form:
+=======
   m_GameObject: {fileID: 1084107302}
   m_Enabled: 1
   serializedVersion: 10

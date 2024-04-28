@@ -88,6 +88,7 @@ public class UIController : MonoBehaviour
         _proceedButton = root.Q<Button>("proceedButton");
         _closeButton = root.Q<Button>("closeButton");
         _overlapSheet = root.Q<VisualElement>("overlapSheet");
+
         _scrim = root.Q<VisualElement>("scrim");
         _imageContainer = root.Q<VisualElement>("imageContainer");
         _snellenLabel = root.Q<Label>("snellenLabel");
@@ -100,16 +101,17 @@ public class UIController : MonoBehaviour
         // _bottomContainer.style.display = DisplayStyle.None;
         _proceedButton.RegisterCallback<ClickEvent>(OnProceedButtonClicked);
         _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClicked);
+
         _overlapSheet.RegisterCallback<TransitionEndEvent>(OnOverLapSheetDown);
         _nextButton.RegisterCallback<ClickEvent>(OnNextButtonClicked);
         _startButton.RegisterCallback<ClickEvent>(OnStartButtonClicked);
         _stopButton.RegisterCallback<ClickEvent>(OnStopButtonClicked);
         
         _stopButton.SetEnabled(false);
-        
         // to start from the test directly
         _bottomContainer.style.display = DisplayStyle.Flex;
         _overlapSheet.AddToClassList("bottomSheet--up");
+
         _scrim.AddToClassList("scrim--fadein");
         _snellenLabel.text = snellenMapping.ElementAt(0).Key.Substring(0, 1);
         _scoreLabel.text = string.Format("Your Current Score is 20/{0}",snellenMapping.ElementAt(0).Value[1].ToString());
@@ -133,6 +135,7 @@ public class UIController : MonoBehaviour
     //close button(snellen chart screen closing) clicked
     private void OnCloseButtonClicked(ClickEvent evt)
     {
+
         _overlapSheet.RemoveFromClassList("bottomSheet--up");
         _scrim.RemoveFromClassList("scrim--fadein");
         pointer = 1;
@@ -152,11 +155,13 @@ public class UIController : MonoBehaviour
     //next button clicked when viewing letters
     private void OnNextButtonClicked(ClickEvent evt)
     {
+
         if (pointer < snellenMapping.Count)
         {
             pointer++;
             _snellenLabel.text = snellenMapping.ElementAt(pointer - 1).Key.Substring(0, 1);
             _snellenLabel.style.fontSize = (int)(snellenMapping.ElementAt(pointer - 1).Value[0] * size);
+
             _scoreLabel.text = string.Format("Your Current Score is 20/{0}",snellenMapping.ElementAt(pointer - 2).Value[1].ToString());
 
         }

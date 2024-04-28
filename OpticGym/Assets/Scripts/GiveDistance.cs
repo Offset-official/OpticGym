@@ -56,7 +56,7 @@ public class GiveDistance : MonoBehaviour
             text1.text = "8ft Reached";
             audioData.Play();
             yield return new WaitForSeconds( 5.0f );
-            SceneManager.LoadScene("EyeTest2");
+            SceneManager.LoadScene("Voicing");
         }
         else
         {
