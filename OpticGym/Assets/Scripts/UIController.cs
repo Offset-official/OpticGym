@@ -5,6 +5,9 @@ using UnityEngine.UIElements;
 using UnityEngine.Windows;
 using UnityEngine.Android;
 using System.Linq;
+using System;
+using Whisper.Utils;
+
 public class UIController : MonoBehaviour
 {
 
@@ -12,26 +15,33 @@ public class UIController : MonoBehaviour
     private Button _proceedButton;
     private Button _closeButton;
     private VisualElement _overlapSheet;
-    private VisualElement _scrim;
+    // private VisualElement _scrim;
     private VisualElement _imageContainer;
     private Label _snellenLabel;
-    private Button _nextButton;
     private AudioSource _audioData;
-    private bool _beingHandled = false;
-    private Button _startButton;
-    private Button _stopButton;
+    //private bool _beingHandled = false;
     private VoiceRecog VoiceRecogScript;
     private Label _spokenTextBox;
+    private Label _actuityScore;
     private Label _scoreLabel;
+    public Button _startButton;
+    private int error;
+    [SerializeField] private AudioClip StartInstructions;
     
+    
+
+    private char older;
     //benchmarking text size for scaling
     private const int size = 750;
     //pointer to keep track of the current snellen chart letter
     private int pointer = 1;
 
+    private int errorFlag = 0;
+
+    private string rowNumber = "A0";
+    private bool GameState = true;
     //snellen chart mapping
     private Dictionary<string, List<double>> snellenMapping = new Dictionary<string, List<double>>()
-
     {   
         { "A0", new List<double>{ 1.0, 200.0 } },
         { "E1", new List<double> { 1.0, 200.0 } },
@@ -75,6 +85,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        older = ' ';
         Debug.Log("Number of devices found: " + Microphone.devices.Length);
         VoiceRecogScript = GetComponent<VoiceRecog>();
         if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
@@ -88,56 +99,57 @@ public class UIController : MonoBehaviour
         _proceedButton = root.Q<Button>("proceedButton");
         _closeButton = root.Q<Button>("closeButton");
         _overlapSheet = root.Q<VisualElement>("overlapSheet");
-
-        _scrim = root.Q<VisualElement>("scrim");
+        // _scrim = root.Q<VisualElement>("scrim");
         _imageContainer = root.Q<VisualElement>("imageContainer");
         _snellenLabel = root.Q<Label>("snellenLabel");
-        _nextButton = root.Q<Button>("nextButton");
-        _startButton = root.Q<Button>("startButton");
-        _stopButton = root.Q<Button>("stopButton");
         _spokenTextBox = root.Q<Label>("spokenText");
         _scoreLabel = root.Q<Label>("scoreLabel");
+        _startButton = root.Q<Button>("startButton");
+        _actuityScore = root.Q<Label>("ActuityScore");
         
         // _bottomContainer.style.display = DisplayStyle.None;
         _proceedButton.RegisterCallback<ClickEvent>(OnProceedButtonClicked);
         _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClicked);
-
-        _overlapSheet.RegisterCallback<TransitionEndEvent>(OnOverLapSheetDown);
-        _nextButton.RegisterCallback<ClickEvent>(OnNextButtonClicked);
-        _startButton.RegisterCallback<ClickEvent>(OnStartButtonClicked);
-        _stopButton.RegisterCallback<ClickEvent>(OnStopButtonClicked);
+        // _overlapSheet.RegisterCallback<TransitionEndEvent>(OnOverLapSheetDown);
+        // _nextButton.RegisterCallback<ClickEvent>(OnNextButtonClicked);
         
-        _stopButton.SetEnabled(false);
         // to start from the test directly
         _bottomContainer.style.display = DisplayStyle.Flex;
         _overlapSheet.AddToClassList("bottomSheet--up");
+        // _scrim.AddToClassList("scrim--fadein");
+        
+        // _snellenLabel.text = snellenMapping.ElementAt(0).Key.Substring(0, 1);
+        // _scoreLabel.text = string.Format("Your Current Score is 20/{0}",snellenMapping.ElementAt(0).Value[1].ToString());
 
-        _scrim.AddToClassList("scrim--fadein");
-        _snellenLabel.text = snellenMapping.ElementAt(0).Key.Substring(0, 1);
-        _scoreLabel.text = string.Format("Your Current Score is 20/{0}",snellenMapping.ElementAt(0).Value[1].ToString());
+        rowNumber = "A0";
+        _audioData.clip = StartInstructions;
+        _audioData.Play();
 
     }
 
     //event handlers
 
     //proceed button(main screen eye test) clicked
-    
+
     private void OnProceedButtonClicked(ClickEvent evt)
     {
         _bottomContainer.style.display = DisplayStyle.Flex;
         _overlapSheet.AddToClassList("bottomSheet--up");
-        _scrim.AddToClassList("scrim--fadein");
+        // _scrim.AddToClassList("scrim--fadein");
         _snellenLabel.text = snellenMapping.ElementAt(0).Key.Substring(0, 1);
         _scoreLabel.text = string.Format("Your Current Score is 20/{0}",snellenMapping.ElementAt(0).Value[1].ToString());
-        
+        _actuityScore.text = string.Format("Actuity Score: 20/{0}",snellenMapping.ElementAt(0).Value[1].ToString());
+        rowNumber = "A0";
+        Debug.Log("Row number on proceed button click: " + rowNumber);
+
     }
 
     //close button(snellen chart screen closing) clicked
     private void OnCloseButtonClicked(ClickEvent evt)
     {
-
+        _bottomContainer.style.display = DisplayStyle.None;
         _overlapSheet.RemoveFromClassList("bottomSheet--up");
-        _scrim.RemoveFromClassList("scrim--fadein");
+        // _scrim.RemoveFromClassList("scrim--fadein");
         pointer = 1;
         _snellenLabel.text = "";
         _snellenLabel.style.fontSize = size;
@@ -156,42 +168,113 @@ public class UIController : MonoBehaviour
     private void OnNextButtonClicked(ClickEvent evt)
     {
 
+        GoNext();
+    }
+
+    private void GoNext()
+    {
         if (pointer < snellenMapping.Count)
         {
             pointer++;
             _snellenLabel.text = snellenMapping.ElementAt(pointer - 1).Key.Substring(0, 1);
             _snellenLabel.style.fontSize = (int)(snellenMapping.ElementAt(pointer - 1).Value[0] * size);
 
-            _scoreLabel.text = string.Format("Your Current Score is 20/{0}",snellenMapping.ElementAt(pointer - 2).Value[1].ToString());
+            var currentRow = snellenMapping.ElementAt(pointer - 1).Key.Substring(1, 1);
+            if (currentRow != rowNumber.Substring(1, 1))
+            {
+                _scoreLabel.text = string.Format("Your Current Score is 20/{0}", snellenMapping[rowNumber][1].ToString());
+                _actuityScore.text = string.Format("Actuity Score: 20/{0}",snellenMapping.ElementAt(0).Value[1].ToString());
+                rowNumber = snellenMapping.ElementAt(pointer - 1).Key;
+                errorFlag = 1;
+            }
+            else if (snellenMapping.ElementAt(pointer - 1).Key == "C8")
+            {
+                _scoreLabel.text = string.Format("Your Current Score is 20/20. Congratulations!!!");
+                _actuityScore.text = "Congratulations! You have actuity Score of  20/20";
+
+            }
+            else
+            {
+                errorFlag = 0;
+            }
+
 
         }
     }
 
-    private void OnStartButtonClicked(ClickEvent evt)
+    private void EndGame()
     {
-        VoiceRecogScript.StartRecording();
+        Debug.Log("Game is Over");
+        _bottomContainer.style.display = DisplayStyle.None;
+        _overlapSheet.RemoveFromClassList("bottomSheet--up");
+        // _scrim.RemoveFromClassList("scrim--fadein");
+        pointer = 1;
+        _snellenLabel.text = "";
+        _snellenLabel.style.fontSize = size;
+        GameState = false;
+
     }
 
-    private void OnStopButtonClicked(ClickEvent evt)
-    {
-        VoiceRecogScript.StopRecording();
-    }
     private void Update()
     {
-        if (!_beingHandled)
+        if (GameState)
         {
-            StartCoroutine(Listen());
+            if (error > 2)
+            {
+                EndGame();
+            }
+
+            if (VoiceRecogScript.response != older)
+            {
+                if (snellenMapping.ElementAt(pointer - 1).Key.Substring(0, 1)[0] == VoiceRecogScript.response)
+                {
+                    if (errorFlag == 1)
+                    {
+                        error = 0;
+                    }
+
+                    GoNext();
+                }
+                else
+                {
+                    error += 1;
+                    Debug.Log("Wrong");
+                }
+
+
+                older = VoiceRecogScript.response;
+            }
         }
+        // if (!_beingHandled)
+        // {
+        //     StartCoroutine(Listen());
+        // }
+        //
+        // if (VoiceRecogScript.response != ' ')
+        // {
+        //     char epic = VoiceRecogScript.response;
+        //     Debug.Log("Comparing Against: " + snellenMapping.ElementAt(pointer - 1).Key.Substring(0, 1)[0] + "With " + epic);
+
+        //     else
+        //     {
+        //         Debug.Log("WRONG");
+        //     }
+        //     VoiceRecogScript.response = ' ';
+        // }
     }
     
-    private IEnumerator Listen()
-    {
-        _beingHandled = true;
-        // Debug.Log("This Script is running");
-        // VoiceRecogScript.StartRecording();
-        yield return new WaitForSeconds(0.25f);
-        // VoiceRecogScript.StopRecording();
-        // yield return new WaitForSeconds(10f);
-        _beingHandled = false;
-    }
+    // private IEnumerator Listen()
+    // {
+    //     _beingHandled = true;
+    //     // yield return new WaitForSeconds(2f);
+    //     Debug.Log("This Script is running");
+    //     // _startButton.SendEvent(ClickEvent);
+    //     VoiceRecogScript.StartRecording();
+    //     yield return new WaitForSeconds(5f);
+    //     VoiceRecogScript.StopRecording();
+    //         // _startButton.SendEvent(e);
+    //     yield return new WaitForSeconds(4f);
+    //     // Debug.Log("Done Waiting");
+    //     _beingHandled = false;
+    // }
 }
