@@ -77,10 +77,15 @@ namespace UnityEngine.XR.ARFoundation.Samples
         {
             var mainCamera = Camera.main;
 
+            
+
             var fixationInViewSpace = mainCamera.WorldToViewportPoint(m_Face.fixationPoint.position);
 
             // The camera texture is mirrored so x and y must be changed to match where the fixation point is in relation to the face.
             var mirrorFixationInView = new Vector3(1 - fixationInViewSpace.x, 1 - fixationInViewSpace.y, fixationInViewSpace.z);
+
+            Debug.Log("Fixation Point coords:");
+            Debug.Log(mirrorFixationInView);
 
             if (m_FixationReticleGameObject != null)
             {
