@@ -1,13 +1,16 @@
 ﻿<Properties StartupConfiguration="{671D076D-DB04-0074-CCA8-231F56737085}|">
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8e26920b-aa05-47a2-bbe3-de98d7ff6a6c" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EyeBlinkCount.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="09b59cfc-4a4a-4775-8dbf-498cce23cbf8" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/EyeBlinkCount.cs" Line="79" Column="52" />
-      <File FileName="Assets/Scripts/EyePoseVisualiser.cs" Line="5" Column="7" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="126" Column="29" />
+      <File FileName="Assets/Scripts/BubbleManager.cs" Line="8" Column="21" />
+      <File FileName="Assets/Scripts/CustomEyeData.cs" Line="33" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,6 +24,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

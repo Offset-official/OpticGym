@@ -1,24 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARFoundation.Samples;
 
+using EyePositionStates = CustomEyeData.EyePositionStates;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
     [SerializeField]
     GameObject bubblePrefab;
+
+    [SerializeField]
+    TextMeshProUGUI scoreBoardText;
+
     ARFaceManager arFaceManager;
     ARFace arFace;
-    GameObject canvas;
-    GameObject scoreBoard;
+
     int currBubblePos = 0;
     int bubblesPopped = 0;
     int bubblesAdded = 0;
+
+    List<EyePositionStates> eyeDestinations;
+
+    bool detecting = false;
+
+    FixationPoint2DCoords fixationScript;
+
+    AudioSource m_AudioSource;
+    RawImage currStateSprite;
 
 
     // Start is called before the first frame update
@@ -26,17 +39,32 @@ public class GameManager : MonoBehaviour
     {
         arFaceManager = FindObjectOfType<ARFaceManager>();
         arFaceManager.facesChanged += OnFacesChanged;
-        canvas = GameObject.Find("FaceDetection");
-        scoreBoard = GameObject.Find("ScoreBoard");
+
+        eyeDestinations = new List<EyePositionStates>() {
+            EyePositionStates.MiddleRight, EyePositionStates.MiddleLeft};
+
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*Debug.Log(Time.time);*/
-        if (arFace != null)
+        Debug.Log("looking for collision");
+        Debug.Log("detection: " + detecting);
+        if (detecting)
         {
-            Debug.Log("Got a face!");
+            Debug.Log(eyeDestinations[currBubblePos]);
+            var isCorrectDirection = fixationScript.IsFixationAt(eyeDestinations[currBubblePos]);
+            if (isCorrectDirection)
+            {
+                Debug.Log("correct eyes state. need to go next");
+                currBubblePos = (currBubblePos + 1) % eyeDestinations.Count;
+                bubblesPopped += 1;
+                currStateSprite.color = new Color(255, 255, 255, 30);
+                detecting = false;
+                isCorrectDirection = false; // just in case
+                StartCoroutine(PlaySoundAndSpawn());
+            }
         }
     }
 
@@ -45,17 +73,15 @@ public class GameManager : MonoBehaviour
         if (args.added.Count == 1)
         {
             arFace = args.added[0];
-            canvas.SetActive(false);
-            scoreBoard.SetActive(true);
             SpawnBubble(arFace);
+            fixationScript = arFace.GetComponent<FixationPoint2DCoords>();
 
         }
 
         else if (args.removed.Count == 1)
         {
             arFace = null;
-            canvas.SetActive(true);
-            scoreBoard.SetActive(false);
+            fixationScript = null;
         }
 
 
@@ -64,43 +90,58 @@ public class GameManager : MonoBehaviour
     void SpawnBubble(ARFace face)
     {
 
-        if (face != null)
-        {
-            Transform faceChild = face.gameObject.transform.GetChild(0);
-            currBubblePos = (currBubblePos + 1) % 4;
-            Debug.Log(currBubblePos);
-            GameObject bubble = Instantiate(bubblePrefab,
-                faceChild.transform.position + new Vector3(0, 0, -0.1f),
-                Quaternion.Euler(new Vector3(0, 0, 0))
-                );
-            /*faceChild.transform.rotation = Quaternion.Euler(new Vector3(0, currBubblePos * 90));*/
-            bubblesAdded++;
-            Debug.Log("Bubble spawned");
-            /*            scoreBoard.GetComponent<TextMeshProUGUI>().text = "Time " + Time.time;
-            */
+        if (face == null)
+            return; // no AR face
 
-            scoreBoard.GetComponent<TextMeshProUGUI>().text = "Score: " + bubblesPopped + "/" + bubblesAdded;
-            bubble.GetComponent<BubbleManager>().gameManager = gameObject;
-            float randAngle = Random.Range(0, 2 * Mathf.PI);
-            bubble.GetComponent<BubbleManager>().randAngle = randAngle;
+        var camera = Camera.main;
+
+        var zCoord = camera.nearClipPlane + 0.1f;
+        Vector3 spawnPosition;
 
 
-        }
+        var spawnEnum = eyeDestinations[(currBubblePos + 1) % eyeDestinations.Count];
+        var spawnPos = CustomEyeData.EyeStateToPositions[spawnEnum];
+        spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f + spawnPos[0] * 0.4f, 0.5f + spawnPos[1] * 0.4f, zCoord));
+
+        // }
+        // else
+        // {
+        //     spawnPosition = lastBubblePopPos;
+        // }
+
+
+        Debug.Log(currBubblePos);
+        GameObject bubble = Instantiate(bubblePrefab, spawnPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
+
+        bubblesAdded++;
+
+        scoreBoardText.text = "Score: " + bubblesPopped + "/" + bubblesAdded;
+        bubble.GetComponent<BubbleManager>().gameManager = gameObject;
+        var destination = eyeDestinations[currBubblePos];
+        var direction = CustomEyeData.EyeStateToPositions[destination];
+        bubble.GetComponent<BubbleManager>().direction = new List<int>() { direction[0], direction[1]
+};
     }
 
-    void bubblePopped(GameObject bubble)
+    public void bubbleLeft()
     {
-        bubblesPopped++;
-        SpawnBubble(arFace);
-
-
+        Debug.Log("Bubble has left");
+        detecting = true;
+        Debug.Log(eyeDestinations[currBubblePos].ToString());
+        currStateSprite = GameObject.Find(eyeDestinations[currBubblePos].ToString()).GetComponent<RawImage>();
+        currStateSprite.color = new Color(0, 26, 257, 180);
     }
-    void bubbleTimeOut(GameObject bubble)
+
+    IEnumerator PlaySoundAndSpawn()
     {
-        Debug.Log("GAME MANAGER RECEIVED TIMEOUT");
+        m_AudioSource.Play();
+        yield return new WaitUntil(() => m_AudioSource.time >= m_AudioSource.clip.length);
         SpawnBubble(arFace);
     }
-
-
+    public void ToggleLaser()
+    {
+        Debug.Log("Toggling laser");
+        arFace.GetComponent<EyePoseVisualizer>().ToggleLaserShader();
+    }
 
 }

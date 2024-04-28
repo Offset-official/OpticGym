@@ -16,12 +16,12 @@ public class EyeTrackingUI : MonoBehaviour
         }
         if (m_Manager != null && m_Manager.subsystem != null && m_Manager.descriptor.supportsEyeTracking)
         {
-            var infoGO = GetComponent<Text>();
+            var infoGO = GameObject.Find("Eye Tracking Info").GetComponent<Text>();
             infoGO.text = "This device supports eye tracking.";
         }
         else
         {
-            var infoGO = GetComponent<Text>();
+            var infoGO = GameObject.Find("Eye Tracking Info").GetComponent<Text>();
             infoGO.text = "No support :(";
         }
     }
