@@ -33,14 +33,15 @@ public class GameManager : MonoBehaviour
     AudioSource m_AudioSource;
     RawImage currStateSprite;
 
+
     // Start is called before the first frame update
     void Start()
     {
         arFaceManager = FindObjectOfType<ARFaceManager>();
         arFaceManager.facesChanged += OnFacesChanged;
 
-        eyeDestinations = new List<EyePositionStates>() {EyePositionStates.MiddleTop,
-            EyePositionStates.MiddleRight, EyePositionStates.BottomLeft};
+        eyeDestinations = new List<EyePositionStates>() {
+            EyePositionStates.MiddleRight, EyePositionStates.MiddleLeft};
 
         m_AudioSource = GetComponent<AudioSource>();
     }
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("looking for collision");
         Debug.Log("detection: " + detecting);
-        if(detecting)
+        if (detecting)
         {
             Debug.Log(eyeDestinations[currBubblePos]);
             var isCorrectDirection = fixationScript.IsFixationAt(eyeDestinations[currBubblePos]);
@@ -59,10 +60,10 @@ public class GameManager : MonoBehaviour
                 Debug.Log("correct eyes state. need to go next");
                 currBubblePos = (currBubblePos + 1) % eyeDestinations.Count;
                 bubblesPopped += 1;
-                currStateSprite.color = new Color(255, 255, 255, 80);
+                currStateSprite.color = new Color(255, 255, 255, 30);
                 detecting = false;
                 isCorrectDirection = false; // just in case
-                PlaySoundAndSpawn();
+                StartCoroutine(PlaySoundAndSpawn());
             }
         }
     }
@@ -95,11 +96,27 @@ public class GameManager : MonoBehaviour
         var camera = Camera.main;
 
         var zCoord = camera.nearClipPlane + 0.1f;
+        Vector3 spawnPosition;
+        // if (lastBubblePopPos == null)
+        // {
+        // spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zCoord));
+        if (currBubblePos == 0)
+            spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zCoord));
+        else
+        {
+            var spawnEnum = eyeDestinations[currBubblePos - 1];
+            var spawnPos = CustomEyeData.EyeStateToPositions[spawnEnum];
+            spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f + spawnPos[0] * 0.4f, 0.5f + spawnPos[1] * 0.4f, zCoord));
+        }
+        // }
+        // else
+        // {
+        //     spawnPosition = lastBubblePopPos;
+        // }
 
-        var spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zCoord));
 
         Debug.Log(currBubblePos);
-        GameObject bubble = Instantiate(bubblePrefab,spawnPosition,Quaternion.Euler(new Vector3(0, 0, 0)));
+        GameObject bubble = Instantiate(bubblePrefab, spawnPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
 
         bubblesAdded++;
 
@@ -107,7 +124,8 @@ public class GameManager : MonoBehaviour
         bubble.GetComponent<BubbleManager>().gameManager = gameObject;
         var destination = eyeDestinations[currBubblePos];
         var direction = CustomEyeData.EyeStateToPositions[destination];
-        bubble.GetComponent<BubbleManager>().direction = new List<int>() { direction[0], direction[1] };
+        bubble.GetComponent<BubbleManager>().direction = new List<int>() { direction[0], direction[1]
+};
     }
 
     public void bubbleLeft()
@@ -116,14 +134,19 @@ public class GameManager : MonoBehaviour
         detecting = true;
         Debug.Log(eyeDestinations[currBubblePos].ToString());
         currStateSprite = GameObject.Find(eyeDestinations[currBubblePos].ToString()).GetComponent<RawImage>();
-        currStateSprite.color = new Color(255, 0, 0, 255);
+        currStateSprite.color = new Color(0, 26, 257, 180);
     }
 
     IEnumerator PlaySoundAndSpawn()
     {
         m_AudioSource.Play();
-        yield return new WaitUntil(() => m_AudioSource.isPlaying == false);
+        yield return new WaitUntil(() => m_AudioSource.time >= m_AudioSource.clip.length);
         SpawnBubble(arFace);
+    }
+    public void ToggleLaser()
+    {
+        Debug.Log("Toggling laser");
+        arFace.GetComponent<EyePoseVisualizer>().ToggleLaserShader();
     }
 
 }
