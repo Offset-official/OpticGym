@@ -8,15 +8,14 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="84" Column="60" />
-      <File FileName="Assets/Scripts/NewClass.cs" Line="40" Column="2" />
-      <File FileName="Assets/Scripts/BubbleManager.cs" Line="63" Column="26" />
-      <File FileName="Assets/Scripts/FixationPoint2DVisualiser (copy).cs" Line="4" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="126" Column="29" />
+      <File FileName="Assets/Scripts/BubbleManager.cs" Line="8" Column="21" />
+      <File FileName="Assets/Scripts/CustomEyeData.cs" Line="33" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="OpticGym" expanded="True">
+          <Node name="OpticGym">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True" />
             </Node>
