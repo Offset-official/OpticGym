@@ -1,30 +1,28 @@
 ﻿<Properties StartupConfiguration="{671D076D-DB04-0074-CCA8-231F56737085}|">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="09b59cfc-4a4a-4775-8dbf-498cce23cbf8" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EyePoseVisualiser.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/EyeBlinkCount.cs" Line="79" Column="26" />
-      <File FileName="Assets/Scripts/EyePoseVisualiser.cs" Line="5" Column="7" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="76" Column="29" />
-      <File FileName="Assets/Scripts/BubbleManager.cs" Line="71" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="84" Column="60" />
+      <File FileName="Assets/Scripts/NewClass.cs" Line="40" Column="2" />
+      <File FileName="Assets/Scripts/BubbleManager.cs" Line="63" Column="26" />
+      <File FileName="Assets/Scripts/FixationPoint2DVisualiser (copy).cs" Line="4" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="OpticGym">
+          <Node name="OpticGym" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="EyePoseVisualiser.cs" selected="True" />
-              </Node>
+              <Node name="Scripts" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="265c78a4-6a38-464a-9bbe-42f5fa075361" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

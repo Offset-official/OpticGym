@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PopGame.unity
     guid: 56648ea89b5bd9242a6acc4dcff7b338
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EyeState.unity
     guid: 6b13b11f1abae402c8f108e8baf4af7e
+  - enabled: 1
+    path: Assets/Scenes/EyeGame.unity
+    guid: 595264ca0dff743eb8ec94608088ac40
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}

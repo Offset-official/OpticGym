@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARFoundation.Samples;
 
+using EyePositionStates = CustomEyeData.EyePositionStates;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,23 +19,35 @@ public class GameManager : MonoBehaviour
     int bubblesPopped = 0;
     int bubblesAdded = 0;
 
+    List<EyePositionStates> eyeDestinations;
+
+    bool detecting = false;
+
+    FixationPoint2DCoords fixationScript;
 
     // Start is called before the first frame update
     void Start()
     {
         arFaceManager = FindObjectOfType<ARFaceManager>();
         arFaceManager.facesChanged += OnFacesChanged;
-        canvas = GameObject.Find("FaceDetection");
         scoreBoard = GameObject.Find("ScoreBoard");
+
+        eyeDestinations = new List<EyePositionStates>() {EyePositionStates.MiddleTop,
+            EyePositionStates.MiddleRight, EyePositionStates.BottomLeft};
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*Debug.Log(Time.time);*/
-        if (arFace != null)
+        if(detecting && fixationScript)
         {
-            Debug.Log("Got a face!");
+            var isCorrectDirection = fixationScript.IsFixationAt(eyeDestinations[currBubblePos]);
+            if (isCorrectDirection)
+            {
+                Debug.Log("correct eyes state. need to go next");
+                detecting = false;
+                SpawnBubble(arFace);
+            }
         }
     }
 
@@ -45,16 +56,18 @@ public class GameManager : MonoBehaviour
         if (args.added.Count == 1)
         {
             arFace = args.added[0];
-            canvas.SetActive(false);
+            //canvas.SetActive(false);
             scoreBoard.SetActive(true);
             SpawnBubble(arFace);
+
+            fixationScript = arFace.GetComponent<FixationPoint2DCoords>();
 
         }
 
         else if (args.removed.Count == 1)
         {
             arFace = null;
-            canvas.SetActive(true);
+            fixationScript = null;
             scoreBoard.SetActive(false);
         }
 
@@ -63,44 +76,33 @@ public class GameManager : MonoBehaviour
 
     void SpawnBubble(ARFace face)
     {
-        
-        if (face != null)
-        {
-            Transform faceChild = face.gameObject.transform.GetChild(0);
-            currBubblePos = (currBubblePos + 1) % 4;
-            Debug.Log(currBubblePos);
-            GameObject bubble = Instantiate(bubblePrefab,
-                faceChild.transform.position + new Vector3(0, 0, -0.1f),
-                Quaternion.Euler(new Vector3(0, 0, 0)),
-                faceChild);
-            /*faceChild.transform.rotation = Quaternion.Euler(new Vector3(0, currBubblePos * 90));*/
-            bubblesAdded++;
-            Debug.Log("Bubble spawned");
-            /*            scoreBoard.GetComponent<TextMeshProUGUI>().text = "Time " + Time.time;
-            */
-            
-            scoreBoard.GetComponent<TextMeshProUGUI>().text = "Score: " + bubblesPopped + "/" + bubblesAdded;
-            bubble.GetComponent<BubbleManager>().gameManager = gameObject;
-            float randAngle = Random.Range(0, 2 * Mathf.PI);
-            bubble.GetComponent<BubbleManager>().randAngle = randAngle;
 
+        if (face == null)
+            return; // no AR face
 
-        }
+        var camera = Camera.main;
+
+        var zCoord = camera.nearClipPlane + 0.1f;
+
+        var spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zCoord));
+
+        Debug.Log(currBubblePos);
+        GameObject bubble = Instantiate(bubblePrefab,spawnPosition,Quaternion.Euler(new Vector3(0, 0, 0)));
+
+        bubblesAdded++;
+
+        scoreBoard.GetComponent<TextMeshProUGUI>().text = "Score: " + bubblesPopped + "/" + bubblesAdded;
+        bubble.GetComponent<BubbleManager>().gameManager = gameObject;
+        var destination = eyeDestinations[currBubblePos++];
+        var direction = CustomEyeData.EyeStateToPositions[destination];
+        bubble.GetComponent<BubbleManager>().direction = new List<int>() { direction[0], direction[1] };
+        currBubblePos %= eyeDestinations.Count;
+
     }
 
-    void bubblePopped(GameObject bubble)
+    public void bubbleLeft()
     {
-        bubblesPopped++;
-        SpawnBubble(arFace);
-        
-
-    }
-    void bubbleTimeOut(GameObject bubble)
-    {
-        Debug.Log("GAME MANAGER RECEIVED TIMEOUT");
-        SpawnBubble(arFace);
+        detecting = true;
     }
 
-    
-    
 }
