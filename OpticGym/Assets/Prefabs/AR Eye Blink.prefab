@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3531229343274071002}
   - component: {fileID: 7633718100117399105}
   - component: {fileID: 5877698926502911568}
+  - component: {fileID: 4698842997738130229}
   m_Layer: 0
   m_Name: AR Eye Blink
   m_TagString: Untagged
@@ -58,3 +59,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70aaa0ab8569488ca5a53fd356a853f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4698842997738130229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740418655557261266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb50a4e7f0bd4503ae2e1c812a77628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EyePrefab: {fileID: 4361503314948353034, guid: 9f004a92627164a9aaf69fc2e78744fb,
+    type: 3}

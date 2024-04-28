@@ -7,6 +7,9 @@
             <ui:Label tabindex="-1" text="0/15" parse-escape-sequences="true" display-tooltip-when-elided="true" name="blinkCountInfo" style="-unity-text-align: middle-center; color: rgba(255, 255, 255, 0.26);" />
             <ui:Label tabindex="-1" text="No Face Detected" parse-escape-sequences="true" display-tooltip-when-elided="true" name="status" style="font-size: 57px; -unity-text-align: upper-center; color: rgba(255, 255, 255, 0.41);" />
         </ui:VisualElement>
-        <ui:Label tabindex="-1" text="Blink Test" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="font-size: 185px; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/SFPRODISPLAYMEDIUM%20SDF.asset?fileID=11400000&amp;guid=e106cbbe0a0a3974eae6e21f1b8d55e1&amp;type=2#SFPRODISPLAYMEDIUM SDF&quot;); margin-bottom: 65px; margin-left: 92px;" />
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between;">
+            <ui:Label tabindex="-1" text="Blink Test" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="font-size: 185px; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/SFPRODISPLAYMEDIUM%20SDF.asset?fileID=11400000&amp;guid=e106cbbe0a0a3974eae6e21f1b8d55e1&amp;type=2#SFPRODISPLAYMEDIUM SDF&quot;); margin-bottom: 65px; margin-left: 92px; justify-content: center; align-self: center; align-items: center; -unity-text-align: upper-center;" />
+            <ui:VisualElement style="flex-grow: 0; width: 573px; height: 337px; background-image: url(&quot;project://database/Assets/cameraTexture.renderTexture?fileID=8400000&amp;guid=49f13010f91fd4cfcbea4aa8868a727d&amp;type=2#cameraTexture&quot;); margin-top: 20px; margin-right: 20px; margin-bottom: 45px; margin-left: 45px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

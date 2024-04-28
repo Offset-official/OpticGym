@@ -21,7 +21,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
         const int totalBlinkCount = 10;
 
         ARFace m_Face;
-        Label m_BlinkCountText;
+        UIElements.Label m_BlinkCountText;
+        UIElements.Label m_FaceStatusText;
         ARKit.ARKitFaceSubsystem m_FaceSubsystem;
 
         private EyeState eyeState = EyeState.Open;
@@ -36,8 +37,10 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             var root = FindObjectOfType<UIDocument>().rootVisualElement;
 
-            m_BlinkCountText = root.Q<Label>("blinkCountInfo");
-            m_BlinkCountText.text = "Ready to blink!";
+            m_BlinkCountText = root.Q<UIElements.Label>("blinkCountInfo");
+            m_FaceStatusText = root.Q<UIElements.Label>("status");
+            m_BlinkCountText.text = blinkCount.ToString() + "/" + totalBlinkCount.ToString();
+            m_FaceStatusText.text = "waiting for face";
 
         }
 
@@ -48,17 +51,20 @@ namespace UnityEngine.XR.ARFoundation.Samples
             var faceManager = FindObjectOfType<ARFaceManager>();
             if (faceManager != null && faceManager.subsystem != null && faceManager.descriptor.supportsEyeTracking)
             {
+                m_FaceStatusText.text = "face detected";
                 m_Face.updated += OnUpdated;
             }
             else
             {
                 enabled = false;
+                m_FaceStatusText.text = "waiting for face";
             }
         }
 
         void OnDisable()
         {
             m_Face.updated -= OnUpdated;
+            m_FaceStatusText.text = "waiting for face";
         }
 
 
@@ -95,6 +101,12 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         private void UpdateBlinkCountText()
         {
+            if (blinkCount >= totalBlinkCount)
+            {
+                m_BlinkCountText.text = totalBlinkCount.ToString() + "/" + totalBlinkCount.ToString();
+                m_FaceStatusText.text = "Completed!";
+                return;
+            }
             Debug.Log(blinkCount);
             m_BlinkCountText.text = blinkCount.ToString() + "/" + totalBlinkCount.ToString();
         }
