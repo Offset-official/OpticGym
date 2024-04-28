@@ -23,6 +23,7 @@ public class GiveDistance : MonoBehaviour
         XROrigin=GameObject.Find("XR Origin (XR Rig)").GetComponent<XROrigin>();
         text1 = GameObject.Find("displayText").GetComponent<TextMeshProUGUI>();
         text1.text = "Distance: " + 0 + "cm";
+        audioData.Play();
         // Vector3 XRpos = camera1.ViewportToWorldPoint(XROrigin.transform.position);
         // Vector3 facepos = camera1.ViewportToWorldPoint(transform.position);
         // text1.text = "Distance: " + Vector3.Distance(XRpos,facepos);

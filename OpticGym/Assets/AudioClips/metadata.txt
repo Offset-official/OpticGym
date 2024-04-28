@@ -1,0 +1,15 @@
+01: Please stand 8ft away from the screen
+02: After this message, please say aloud the letter shown
+03: Correct
+04: Incorrect
+05: The test is completed
+06: Please look up!
+07: Please, look left.
+08: Please, look right.
+09: Please, look down,
+10: Please, look upper left.
+11: Please, look upper right.
+12: Please, look lower left.
+13: Please, look lower right.
+14: After this message, please say aloud a word with the letter shown.
+15: Speak now!
