@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -5,16 +6,20 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARFoundation.Samples;
 
 using EyePositionStates = CustomEyeData.EyePositionStates;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
     [SerializeField]
     GameObject bubblePrefab;
+
+    [SerializeField]
+    TextMeshProUGUI scoreBoardText;
+
     ARFaceManager arFaceManager;
     ARFace arFace;
-    GameObject canvas;
-    GameObject scoreBoard;
+
     int currBubblePos = 0;
     int bubblesPopped = 0;
     int bubblesAdded = 0;
@@ -25,28 +30,39 @@ public class GameManager : MonoBehaviour
 
     FixationPoint2DCoords fixationScript;
 
+    AudioSource m_AudioSource;
+    RawImage currStateSprite;
+
     // Start is called before the first frame update
     void Start()
     {
         arFaceManager = FindObjectOfType<ARFaceManager>();
         arFaceManager.facesChanged += OnFacesChanged;
-        scoreBoard = GameObject.Find("ScoreBoard");
 
         eyeDestinations = new List<EyePositionStates>() {EyePositionStates.MiddleTop,
             EyePositionStates.MiddleRight, EyePositionStates.BottomLeft};
+
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(detecting && fixationScript)
+        Debug.Log("looking for collision");
+        Debug.Log("detection: " + detecting);
+        if(detecting)
         {
+            Debug.Log(eyeDestinations[currBubblePos]);
             var isCorrectDirection = fixationScript.IsFixationAt(eyeDestinations[currBubblePos]);
             if (isCorrectDirection)
             {
                 Debug.Log("correct eyes state. need to go next");
+                currBubblePos = (currBubblePos + 1) % eyeDestinations.Count;
+                bubblesPopped += 1;
+                currStateSprite.color = new Color(255, 255, 255, 80);
                 detecting = false;
-                SpawnBubble(arFace);
+                isCorrectDirection = false; // just in case
+                PlaySoundAndSpawn();
             }
         }
     }
@@ -56,10 +72,7 @@ public class GameManager : MonoBehaviour
         if (args.added.Count == 1)
         {
             arFace = args.added[0];
-            //canvas.SetActive(false);
-            scoreBoard.SetActive(true);
             SpawnBubble(arFace);
-
             fixationScript = arFace.GetComponent<FixationPoint2DCoords>();
 
         }
@@ -68,7 +81,6 @@ public class GameManager : MonoBehaviour
         {
             arFace = null;
             fixationScript = null;
-            scoreBoard.SetActive(false);
         }
 
 
@@ -91,18 +103,25 @@ public class GameManager : MonoBehaviour
 
         bubblesAdded++;
 
-        scoreBoard.GetComponent<TextMeshProUGUI>().text = "Score: " + bubblesPopped + "/" + bubblesAdded;
+        scoreBoardText.text = "Score: " + bubblesPopped + "/" + bubblesAdded;
         bubble.GetComponent<BubbleManager>().gameManager = gameObject;
-        var destination = eyeDestinations[currBubblePos++];
+        var destination = eyeDestinations[currBubblePos];
         var direction = CustomEyeData.EyeStateToPositions[destination];
         bubble.GetComponent<BubbleManager>().direction = new List<int>() { direction[0], direction[1] };
-        currBubblePos %= eyeDestinations.Count;
-
     }
 
     public void bubbleLeft()
     {
+        Debug.Log("Bubble has left");
         detecting = true;
+        Debug.Log(eyeDestinations[currBubblePos].ToString());
+        currStateSprite = GameObject.Find(eyeDestinations[currBubblePos].ToString()).GetComponent<RawImage>();
+        currStateSprite.color = new Color(255, 0, 0, 255);
     }
 
+    void PlaySoundAndSpawn()
+    {
+        m_AudioSource.Play();
+        SpawnBubble(arFace);
+    }
 }
