@@ -7,7 +7,7 @@ public class BubbleManager : MonoBehaviour
 
     public GameObject gameManager;
     [SerializeField]
-    float speed = 0.07f;
+    float speed;
 
     public List<int> direction = new List<int> { 0, 0 };
 
@@ -39,6 +39,7 @@ public class BubbleManager : MonoBehaviour
         transform.position = new Vector3(transform.position.x + (direction[0] * speed),
             transform.position.y + (direction[1] * speed),
             transform.position.z);
+        transform.Rotate(0, 1, 0);
     }
     IEnumerator DestroyCoroutine()
     {

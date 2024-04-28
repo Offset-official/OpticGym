@@ -97,17 +97,12 @@ public class GameManager : MonoBehaviour
 
         var zCoord = camera.nearClipPlane + 0.1f;
         Vector3 spawnPosition;
-        // if (lastBubblePopPos == null)
-        // {
-        // spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zCoord));
-        if (currBubblePos == 0)
-            spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zCoord));
-        else
-        {
-            var spawnEnum = eyeDestinations[currBubblePos - 1];
-            var spawnPos = CustomEyeData.EyeStateToPositions[spawnEnum];
-            spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f + spawnPos[0] * 0.4f, 0.5f + spawnPos[1] * 0.4f, zCoord));
-        }
+
+
+        var spawnEnum = eyeDestinations[(currBubblePos + 1) % eyeDestinations.Count];
+        var spawnPos = CustomEyeData.EyeStateToPositions[spawnEnum];
+        spawnPosition = camera.ViewportToWorldPoint(new Vector3(0.5f + spawnPos[0] * 0.4f, 0.5f + spawnPos[1] * 0.4f, zCoord));
+
         // }
         // else
         // {
