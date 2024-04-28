@@ -119,9 +119,11 @@ public class GameManager : MonoBehaviour
         currStateSprite.color = new Color(255, 0, 0, 255);
     }
 
-    void PlaySoundAndSpawn()
+    IEnumerator PlaySoundAndSpawn()
     {
         m_AudioSource.Play();
+        yield return new WaitUntil(() => m_AudioSource.isPlaying == false);
         SpawnBubble(arFace);
     }
+
 }
