@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Voicing.unity
     guid: 6704c31eac6a077478de380419a82a66
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EyeLasers.unity
     guid: 41bb31b17b73848f1befa6fb06705328
   - enabled: 1
@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EyeGame.unity
     guid: 595264ca0dff743eb8ec94608088ac40
+  - enabled: 1
+    path: Assets/Scenes/Doctors.unity
+    guid: 148842d5b11e04b5cbbe8e1b00202807
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}

@@ -1,0 +1,43 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:ScrollView style="flex-grow: 1; height: 2488px; background-color: rgb(242, 242, 247); flex-direction: column; -unity-font-definition: url(&quot;project://database/Assets/Fonts/SFPRODISPLAYMEDIUM%20SDF.asset?fileID=11400000&amp;guid=e106cbbe0a0a3974eae6e21f1b8d55e1&amp;type=2#SFPRODISPLAYMEDIUM SDF&quot;);">
+        <ui:VisualElement name="VisualElement" style="flex-grow: 1; -unity-background-image-tint-color: rgb(142, 142, 147); background-color: rgb(242, 242, 247); flex-direction: column; height: auto;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; -unity-text-align: middle-center; align-self: auto; justify-content: flex-start; align-items: center; height: 500px;">
+                <ui:Button text="&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" style="height: 150px; width: 150px; margin-left: 47px; margin-top: 47px; padding-top: 29px; border-top-left-radius: 48px; border-top-right-radius: 48px; border-bottom-right-radius: 48px; border-bottom-left-radius: 48px; background-color: rgb(1, 122, 255); background-image: none; -unity-background-image-tint-color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-right: 44px; padding-bottom: 29px; padding-left: 43px; margin-right: 47px; margin-bottom: 47px; -unity-slice-left: 0;">
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/chevron_left.png?fileID=2800000&amp;guid=2a5159f0df035488aaba038046d205ce&amp;type=3#chevron_left&quot;);" />
+                </ui:Button>
+                <ui:Label tabindex="-1" text="Doctor&apos;s Side" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 150px; font-size: 120px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/SFPRODISPLAYMEDIUM%20SDF.asset?fileID=11400000&amp;guid=e106cbbe0a0a3974eae6e21f1b8d55e1&amp;type=2#SFPRODISPLAYMEDIUM SDF&quot;); -unity-text-align: upper-left;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 100%; flex-basis: auto; flex-direction: row; justify-content: space-between; margin-top: 0; margin-right: 118px; margin-bottom: 118px; margin-left: 118px; flex-wrap: wrap; align-items: flex-start; align-self: flex-start;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 30%; height: 1000px; border-top-left-radius: 37px; border-top-right-radius: 37px; border-bottom-right-radius: 37px; border-bottom-left-radius: 37px; background-color: rgb(255, 255, 255); padding-top: 32px; padding-right: 32px; padding-bottom: 32px; padding-left: 32px; margin-bottom: 255px;">
+                <ui:VisualElement style="flex-grow: 0; flex-basis: 75%; background-image: url(&quot;project://database/Assets/Sprites/main_doctor.jpeg?fileID=2800000&amp;guid=c0a64a4e45ca44f65860fb5b1bd13664&amp;type=3#main_doctor&quot;); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px;" />
+                <ui:VisualElement style="flex-grow: 1; margin-top: 23px;">
+                    <ui:Label tabindex="-1" text="Dr Dhanshree Mane" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 59px; padding-left: 0; -unity-text-align: upper-left; padding-top: 0; padding-right: 0; padding-bottom: 0;" />
+                    <ui:Label tabindex="-1" text="Associate Director – Retina Specialist" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; white-space: normal;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 30%; height: 1000px; border-top-left-radius: 37px; border-top-right-radius: 37px; border-bottom-right-radius: 37px; border-bottom-left-radius: 37px; background-color: rgb(255, 255, 255); padding-top: 32px; padding-right: 32px; padding-bottom: 32px; padding-left: 32px;">
+                <ui:VisualElement style="flex-grow: 0; flex-basis: 75%; background-image: url(&quot;project://database/Assets/Sprites/small_Dr_Rinky_Anand_Gupta_3e511ac89a.jpg?fileID=2800000&amp;guid=8da4fc54a3c4c483ab2944c98bfbdced&amp;type=3#small_Dr_Rinky_Anand_Gupta_3e511ac89a&quot;); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px;" />
+                <ui:VisualElement style="flex-grow: 1; margin-top: 23px;">
+                    <ui:Label tabindex="-1" text="Dr. Rinky Anand Guptav" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 59px; padding-left: 0; -unity-text-align: upper-left; padding-top: 0; padding-right: 0; padding-bottom: 0;" />
+                    <ui:Label tabindex="-1" text="Associate Director – Ophthalmology (Cataract &amp; Refractive Surgeon)" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; white-space: normal;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 30%; height: 1000px; border-top-left-radius: 37px; border-top-right-radius: 37px; border-bottom-right-radius: 37px; border-bottom-left-radius: 37px; background-color: rgb(255, 255, 255); padding-top: 32px; padding-right: 32px; padding-bottom: 32px; padding-left: 32px;">
+                <ui:VisualElement style="flex-grow: 0; flex-basis: 75%; background-image: url(&quot;project://database/Assets/Sprites/ali.png?fileID=2800000&amp;guid=409e30ca652864d1582907850d561406&amp;type=3#ali&quot;); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px;" />
+                <ui:VisualElement style="flex-grow: 1; margin-top: 23px;">
+                    <ui:Label tabindex="-1" text="Dr. Ali Abdaal" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 59px; padding-left: 0; -unity-text-align: upper-left; padding-top: 0; padding-right: 0; padding-bottom: 0;" />
+                    <ui:Label tabindex="-1" text="Associate Director – Ophthalmology (Cataract &amp; Refractive Surgeon)" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; white-space: normal;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 30%; height: 1000px; border-top-left-radius: 37px; border-top-right-radius: 37px; border-bottom-right-radius: 37px; border-bottom-left-radius: 37px; background-color: rgb(255, 255, 255); padding-top: 32px; padding-right: 32px; padding-bottom: 32px; padding-left: 32px;">
+                <ui:VisualElement style="flex-grow: 0; flex-basis: 75%; background-image: url(&quot;project://database/Assets/Sprites/mike.jpeg?fileID=2800000&amp;guid=7d71bce63525149d1b172909e716e215&amp;type=3#mike&quot;); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px;" />
+                <ui:VisualElement style="flex-grow: 1; margin-top: 23px;">
+                    <ui:Label tabindex="-1" text="Dr. Mike" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 59px; padding-left: 0; -unity-text-align: upper-left; padding-top: 0; padding-right: 0; padding-bottom: 0;" />
+                    <ui:Label tabindex="-1" text="A great Doc" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; white-space: normal;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:ScrollView>
+</ui:UXML>

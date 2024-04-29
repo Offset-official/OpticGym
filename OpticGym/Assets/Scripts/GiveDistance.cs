@@ -33,12 +33,10 @@ public class GiveDistance : MonoBehaviour
         {
             text1.text = "8ft Reached";
             Debug.Log("going to next scence");
-            yield return new WaitForSeconds( 5.0f );
             SceneManager.LoadScene("Voicing");
         }
         else
         {
-            // distance = Math.Truncate(((Math.Abs((797.1569 - transform.position.z)) - 0.115f) * 125));
             distance = (Math.Abs(transform.position.z - 0.08))*90;
             text1.text = "Distance: " + distance + "cm";
             yield return new WaitForSeconds(0.25f);
