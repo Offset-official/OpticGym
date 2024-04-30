@@ -30,7 +30,8 @@ https://github.com/Offset-official/OpticGym/assets/25770025/dd2e8179-d93c-4849-8
 
 https://github.com/Offset-official/OpticGym/assets/25770025/5f4ab820-c981-412a-9eb5-c819f2ab295e
 
-- [Slide Deck](./demos/slide-deck.pdf)
+
+[Slide Deck](./demos/slide-deck.pdf)
 
 
 ## Tech Stack
@@ -54,10 +55,10 @@ https://github.com/Offset-official/OpticGym/assets/25770025/5f4ab820-c981-412a-9
   
 ## Upcoming Features
 
-- Color Blind Test
+### Color Blind Test
 <img src="https://github.com/Offset-official/OpticGym/assets/79493191/5a11e847-7df4-4c71-8d6e-90e1bc98cbee" alt="drawing" width="40%"/>
 
-- Direct Connect with Doctors and Hospitals
+### Direct Connect with Doctors and Hospitals
 <img src="https://github.com/Offset-official/OpticGym/assets/79493191/ec4b5321-5cf3-4c50-9fb2-10f35b3386f5" alt="drawing" width="40%"/>
 
 
