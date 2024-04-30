@@ -18,11 +18,11 @@ Supports:
 
 # Demos
 
-- [Eye following / movement excerise](./demos/RPReplay_Final1714361112.MOV)
+- [Eye following / movement excerise](./demos/RPReplay_Final1714361112.mp4)
 
-- [Eye blinking exercise](./demos/RPReplay_Final1714361146.mov)
+- [Eye blinking exercise](./demos/RPReplay_Final1714361146.mp4)
 
-- [Snell's chart for vision metric](./demos/RPReplay_Final1714367427.MOV)
+- [Snell's chart for vision metric](./demos/RPReplay_Final1714367427.mp4)
 
 - [Slide Deck](./demos/slide-deck.pdf)
 
