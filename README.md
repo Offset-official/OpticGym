@@ -4,7 +4,7 @@ An AR based eye exercise and wellness app with real-time positive feedback.
 
 ## Problem Statement
 
-Addresses the problems associated with eye drains and limited movements of eye muscles. 
+Addresses the problems associated with eye strain and limited movements of eye muscles. 
 
 ## Solution
 
