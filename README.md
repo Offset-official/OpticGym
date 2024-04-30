@@ -39,6 +39,18 @@ https://github.com/Offset-official/OpticGym/assets/25770025/5f4ab820-c981-412a-9
 - ARKit
 - AR Foundation
 
+## Pictures
+
+![Main Menu](https://github.com/Offset-official/OpticGym/assets/79493191/84c44e5e-8962-41ac-b60b-6cd50777770a)
+![AR Ball Following](https://github.com/Offset-official/OpticGym/assets/79493191/c685f43b-4a8b-41f3-a333-8997b488ad9e)
+![Blink Test](https://github.com/Offset-official/OpticGym/assets/79493191/fb143b46-ea21-4d0c-8771-ddca69546cb3)
+![Visual Acuity Test](https://github.com/Offset-official/OpticGym/assets/79493191/66a3ef4a-68c1-468c-9f03-ad5df829e6c1)
+  
+## Upcoming Features
+
+![Group 7](https://github.com/Offset-official/OpticGym/assets/79493191/5a11e847-7df4-4c71-8d6e-90e1bc98cbee)
+![Group 9](https://github.com/Offset-official/OpticGym/assets/79493191/ec4b5321-5cf3-4c50-9fb2-10f35b3386f5)
+
 ## Credits
 
 Offset 2024. All rights reserved.
