@@ -16,6 +16,16 @@ Supports:
 - Eye blinking exercise
 - Snell's chart for vision metric
 
+# Demos
+
+- [Eye following / movement excerise](./demos/RPReplay_Final1714361112.MOV)
+
+- [Eye blinking exercise](./demos/RPReplay_Final1714361146.mov)
+
+- [Snell's chart for vision metric](./demos/RPReplay_Final1714367427.MOV)
+
+- [Slide Deck](./demos/slide-deck.pdf)
+
 ## Tech Stack
 
 - Unity
