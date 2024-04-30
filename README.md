@@ -16,15 +16,22 @@ Supports:
 - Eye blinking exercise
 - Snell's chart for vision metric
 
-# Demos
+## Demos
 
-- [Eye following / movement excerise](./demos/RPReplay_Final1714361112.mp4)
+### Eye following / movement excerise
 
-- [Eye blinking exercise](./demos/RPReplay_Final1714361146.mp4)
+https://github.com/Offset-official/OpticGym/assets/25770025/4dd51451-54fc-4169-8b2a-2f1b05a166ea
 
-- [Snell's chart for vision metric](./demos/RPReplay_Final1714367427.mp4)
+### Eye blinking exercise
+
+https://github.com/Offset-official/OpticGym/assets/25770025/dd2e8179-d93c-4849-8edf-3a2ee3ffd823
+
+### Snell's chart for vision metric
+
+https://github.com/Offset-official/OpticGym/assets/25770025/5f4ab820-c981-412a-9eb5-c819f2ab295e
 
 - [Slide Deck](./demos/slide-deck.pdf)
+
 
 ## Tech Stack
 
