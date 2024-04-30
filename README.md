@@ -40,16 +40,16 @@ https://github.com/Offset-official/OpticGym/assets/25770025/5f4ab820-c981-412a-9
 - AR Foundation
 
 ## Screenshots
-- Main Menu
+### Main Menu
 <img src="https://github.com/Offset-official/OpticGym/assets/79493191/84c44e5e-8962-41ac-b60b-6cd50777770a" alt="drawing" width="40%"/>
 
-- AR Eye Tracking Ball Following
+### AR Eye Tracking Ball Following
 <img src="https://github.com/Offset-official/OpticGym/assets/79493191/c685f43b-4a8b-41f3-a333-8997b488ad9e" alt="drawing" width="40%"/>
 
-- AR Blink Test
+### AR Blink Test
 <img src="https://github.com/Offset-official/OpticGym/assets/79493191/fb143b46-ea21-4d0c-8771-ddca69546cb3" alt="drawing" width="40%"/>
 
-- Visual Acuity Test
+### Visual Acuity Test
 <img src="https://github.com/Offset-official/OpticGym/assets/79493191/66a3ef4a-68c1-468c-9f03-ad5df829e6c1" alt="drawing" width="40%"/>
   
 ## Upcoming Features
